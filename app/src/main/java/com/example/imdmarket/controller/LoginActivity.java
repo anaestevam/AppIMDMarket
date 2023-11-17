@@ -1,26 +1,24 @@
 package com.example.imdmarket.controller;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.imdmarket.R;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.imdmarket.R;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
     private Button btnLogin;
     private SharedPreferences sharedPreferences;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         etUsername = findViewById(R.id.username);
         etPassword = findViewById(R.id.password);
@@ -28,23 +26,22 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("UserDetails", MODE_PRIVATE);
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
+        btnLogin.setOnClickListener(v -> loginUser());
+    }
 
-                if (username.equals("admin") && password.equals("admin")) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("username", username);
-                    editor.apply();
+    private void loginUser() {
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
 
-                    Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Nome de usuário ou senha incorretos!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        if (username.equals("admin") && password.equals("admin")) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("username", username);
+            editor.apply();
+
+            Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Nome de usuário ou senha incorretos!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

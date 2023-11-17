@@ -50,14 +50,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="233dp"
-        android:layout_height="46dp"
+        android:layout_width="412dp"
+        android:layout_height="86dp"
         android:text="IMDMARKET"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="38sp"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="104dp"
-        tools:layout_editor_absoluteY="22dp" />
+        android:layout_gravity="center"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/textView3"
