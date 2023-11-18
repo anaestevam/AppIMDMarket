@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">IMDMarket</string>
+    <string name="app_name"> IMDMARKET </string>
+    <string name="login"> Login: </string>
+    <string name="senha"> Senha: </string>
+    <string name="entrar"> Entrar </string>
+    <string name="oqdeseja"> O que deseja fazer? </string>
+    <string name="cadastrarp"> Cadastrar Produto </string>
+    <string name="listarp"> Listar Produto </string>
+    <string name="alterarp"> Alterar Produto </string>
+    <string name="deletarp"> Deletar Produto </string>
+    <string name="codigo"> Código do Produto: </string>
+    <string name="nome"> Nome do Produto: </string>
+    <string name="descricao"> Descrição do Produto: </string>
+    <string name="estoque"> Estoque: </string>
+    <string name="salvar"> Salvar </string>
+    <string name="limpar"> Limpar </string>
+    <string name="listatitulo"> Lista de Produtos </string>
 </resources>
