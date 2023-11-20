@@ -21,6 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.MenuActivity"/>
+        <activity android:name=".model.CadastroActivity"/>
+        <activity android:name=".model.ListaActivity"/>
+        <activity android:name=".model.DeletarProdutoActivity"/>
+        <activity android:name=".model.AlterarProdutoActivity"/>
+        <activity android:name=".controller.MudarSenhaActivity"/>
 
     </application>
 

@@ -1,6 +1,7 @@
 package com.example.imdmarket.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class BancoDAO {
@@ -23,5 +24,23 @@ public class BancoDAO {
         return listaProdutos;
     }
 
+    public void deletarProduto(String codigoProduto) {
+        Iterator<Produto> iterator = listaProdutos.iterator();
+        while (iterator.hasNext()) {
+            Produto produto = iterator.next();
+            if (produto.getCodigo_produto().equals(codigoProduto)) {
+                iterator.remove();
+                break;
+            }
+        }
+    }
 
+    public Produto getProdutoByCodigo(String codigoProduto) {
+        for (Produto produto : listaProdutos) {
+            if (produto.getCodigo_produto().equals(codigoProduto)) {
+                return produto;
+            }
+        }
+        return null; // Retorna null se o produto não for encontrado
+    }
 }
