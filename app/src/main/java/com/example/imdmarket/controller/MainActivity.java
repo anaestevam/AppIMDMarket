@@ -14,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Crie um Intent para a LoginActivity
+        // Cria um Intent para a LoginActivity
         Intent intent = new Intent(this, LoginActivity.class);
 
-        // Inicie a LoginActivity
+        // Inicia o LoginActivity
         startActivity(intent);
 
-        // Finalize a MainActivity para que ela não fique na pilha de atividades
+        // Finaliza a MainActivity para que ela não fique na pilha de atividades
         finish();
     }
 }

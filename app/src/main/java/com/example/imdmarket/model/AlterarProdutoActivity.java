@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.imdmarket.R;
 import com.example.imdmarket.controller.MenuActivity;
+import com.example.imdmarket.database.BancoDAO;
+import com.example.imdmarket.database.Produto;
 
 public class AlterarProdutoActivity extends AppCompatActivity {
     private EditText codigo, nome, descricao, estoque;
     private Button btnSalvar, btnLimpar;
     private Produto produtoExistente;
+    private TextView imdmarket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +29,11 @@ public class AlterarProdutoActivity extends AppCompatActivity {
         estoque = findViewById(R.id.estoque);
         btnSalvar = findViewById(R.id.btnsalvar);
         btnLimpar = findViewById(R.id.btnlimpar);
+        imdmarket = findViewById(R.id.imdmarket);
 
         btnLimpar.setOnClickListener(v -> limparCampos());
         btnSalvar.setOnClickListener(v -> alterarProduto());
-
-       /* if (!codigo.getText().toString().isEmpty()) {
-            atualizarCamposAutomaticamente(codigo.getText().toString());
-        }
-        */
+        imdmarket.setOnClickListener(v -> voltarMenu());
     }
 
     private void limparCampos() {
@@ -51,11 +52,13 @@ public class AlterarProdutoActivity extends AppCompatActivity {
             return;
         }
 
-        BancoDAO banco = BancoDAO.getInstance();
-        Produto produtoExistente = banco.getProdutoByCodigo(codigoProduto);
+        BancoDAO banco = new BancoDAO(this); // 'this' é uma referência a atividade
+        produtoExistente = banco.getProdutoByCodigo(codigoProduto);
 
         if (produtoExistente == null) {
             Toast.makeText(this, "Produto não encontrado com o código fornecido!", Toast.LENGTH_SHORT).show();
+            limparCampos();  // Limpa os campos caso o produto não seja encontrado
+            banco.close(); // Fecha o banco de dados
             return;
         }
 
@@ -63,21 +66,19 @@ public class AlterarProdutoActivity extends AppCompatActivity {
         produtoExistente.setDescrição_produto(descricao.getText().toString());
         produtoExistente.setEstoque(Integer.parseInt(estoque.getText().toString()));
 
+        banco.atualizarProduto(produtoExistente);
         Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+
+        banco.close();
+
+        finish();
+        Intent i = new Intent(this, MenuActivity.class);
+        startActivity(i);
+    }
+    private void voltarMenu() {
         finish();
         Intent i = new Intent(this, MenuActivity.class);
         startActivity(i);
     }
 
-   /* private void atualizarCamposAutomaticamente(String codigoProduto) {
-        BancoDAO banco = BancoDAO.getInstance();
-        // Atualiza os campos automaticamente enquanto o usuário digita o código
-        produtoExistente = banco.getProdutoByCodigo(codigoProduto);
-
-        if (produtoExistente != null) {
-            nome.setText(produtoExistente.getNome_produto());
-            descricao.setText(produtoExistente.getDescrição_produto());
-            estoque.setText(String.valueOf(produtoExistente.getEstoque()));
-        }
-    }*/
 }

@@ -1,4 +1,4 @@
-package com.example.imdmarket.model;
+package com.example.imdmarket.database;
 
 public class Produto {
     private String codigo_produto;
@@ -38,3 +38,4 @@ public class Produto {
         return estoque;
     }
 }
+

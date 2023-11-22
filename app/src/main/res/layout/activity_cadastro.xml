@@ -36,7 +36,7 @@
         app:layout_constraintVertical_bias="0.001">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/imdmarket"
             android:layout_width="218dp"
             android:layout_height="57dp"
             android:text="@string/app_name"
@@ -159,6 +159,7 @@
         android:id="@+id/btnsalvar"
         android:layout_width="109dp"
         android:layout_height="48dp"
+        android:background="@color/roxo"
         android:text="@string/salvar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -170,6 +171,7 @@
         android:id="@+id/btnlimpar"
         android:layout_width="111dp"
         android:layout_height="48dp"
+        android:background="@color/roxo"
         android:text="@string/limpar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

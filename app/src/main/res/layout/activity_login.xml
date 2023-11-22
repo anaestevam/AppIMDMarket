@@ -4,28 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.LoginActivity">
-
+    tools:context=".controller.LoginActivity"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/tv01"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Login:"
-        android:textSize="34sp"
+        android:text="@string/login"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Login"
         android:inputType="text"
@@ -37,21 +37,20 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Senha:"
-        android:textSize="34sp"
+        android:text="@string/senha"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="298dp"
         android:layout_height="72dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
@@ -60,12 +59,12 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="172dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="36dp"
-        android:background="#6F4EAA"
-        android:text="Entrar"
+        android:layout_width="160dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/roxo"
+        android:text="@string/entrar"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -73,42 +72,47 @@
     <TextView
         android:id="@+id/textViewEsqueci"
         android:layout_width="244dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="580dp"
-        android:text="Esqueci minha senha / login"
-        android:textColor="#3F51B5"
-        android:textSize="18sp"
+        android:layout_height="30dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="528dp"
         android:autoLink="web"
+        android:onClick="onTextViewClick"
+        android:shadowColor="#A8514F4F"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3"
+        android:text="@string/esqueci"
+        android:textColor="@color/purple_700"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnknownId" />
+        tools:ignore="OnClick,UnknownId" />
 
-    <ScrollView
-        android:id="@+id/imdmarket"
-        android:layout_width="414dp"
-        android:layout_height="90dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="417dp"
+        android:layout_height="82dp"
         android:background="@color/orange"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="-3dp"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="412dp"
-        android:layout_height="86dp"
-        android:text="IMDMARKET"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="38sp"
-        tools:ignore="MissingConstraints"
-        android:layout_gravity="center"
-        android:gravity="center" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="218dp"
+            android:layout_height="57dp"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.64" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

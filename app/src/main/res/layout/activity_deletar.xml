@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="123dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="124dp"
         android:text="@string/deletarp"
         android:textSize="20sp"
@@ -26,6 +26,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="88dp"
+        android:background="@color/roxo"
         android:text="@string/limpar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cod_prod" />
@@ -37,6 +38,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="52dp"
+        android:background="@color/roxo"
         android:text="@string/deletar"
         app:layout_constraintEnd_toStartOf="@+id/btnlimpar3"
         app:layout_constraintHorizontal_bias="0.0"
@@ -48,7 +50,7 @@
         android:id="@+id/cod_prod"
         android:layout_width="311dp"
         android:layout_height="55dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,13 +62,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="223dp"
         android:layout_marginBottom="35dp"
         android:text="@string/codigo"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/cod_prod"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -86,14 +89,14 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/imdmarket"
         android:layout_width="412dp"
         android:layout_height="86dp"
         android:text="IMDMARKET"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="38sp"
-        tools:ignore="MissingConstraints"
+        tools:ignore="DuplicateIds,MissingConstraints"
         android:layout_gravity="center"
         android:gravity="center" />
 

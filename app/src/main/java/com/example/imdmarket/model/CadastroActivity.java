@@ -7,15 +7,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imdmarket.database.BancoDAO;
+import com.example.imdmarket.database.Produto;
 import com.example.imdmarket.R;
 import com.example.imdmarket.controller.MenuActivity;
 
 public class CadastroActivity extends AppCompatActivity {
     private EditText codigo, nome, descricao, estoque;
     private Button btnSalvar, btnLimpar;
-
+    private TextView imdmarket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,11 @@ public class CadastroActivity extends AppCompatActivity {
         estoque = findViewById(R.id.estoque);
         btnSalvar = findViewById(R.id.btnsalvar);
         btnLimpar = findViewById(R.id.btnlimpar);
+        imdmarket = findViewById(R.id.imdmarket);
 
         btnLimpar.setOnClickListener(v -> limparCampos());
         btnSalvar.setOnClickListener(v -> salvarProduto());
+        imdmarket.setOnClickListener(v -> voltarMenu());
     }
     private void limparCampos() {
         nome.setText("");
@@ -40,26 +45,38 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void salvarProduto() {
-        if(nome.getText().toString().equals("") || codigo.getText().toString().equals("") || descricao.getText().toString().equals("") || estoque.getText().toString().equals("")){
+        String nomeProduto = nome.getText().toString();
+        String codigoProduto = codigo.getText().toString();
+        String descricaoProduto = descricao.getText().toString();
+        String estoqueProduto = estoque.getText().toString();
+
+        if (nomeProduto.equals("") || codigoProduto.equals("") || descricaoProduto.equals("") || estoqueProduto.equals("")) {
             Toast.makeText(this, "Existem campos em branco!", Toast.LENGTH_SHORT).show();
-        }else{
-            //aqui vai codigo pra adicionar no vetor
-            Produto p = new Produto();
-            p.setCodigo_produto(codigo.getText().toString());
-            p.setNome_produto(nome.getText().toString());
-            p.setDescrição_produto(descricao.getText().toString());
-            p.setEstoque(Integer.parseInt(estoque.getText().toString()));
+            return;
+        }
 
-            BancoDAO banco = null;
-            banco.getInstance().salvarProduto(p);
-            Toast.makeText(this, "tem "+banco.getInstance().getLista().toArray().length, Toast.LENGTH_SHORT).show();
+        BancoDAO banco = new BancoDAO(this);
 
+        try {
+            Produto produto = new Produto();
+            produto.setCodigo_produto(codigoProduto);
+            produto.setNome_produto(nomeProduto);
+            produto.setDescrição_produto(descricaoProduto);
+            produto.setEstoque(Integer.parseInt(estoqueProduto));
+
+            banco.salvarProduto(produto);
             Toast.makeText(this, "Cadastro realizado com sucesso!", Toast.LENGTH_SHORT).show();
             finish();
             Intent i = new Intent(this, MenuActivity.class);
             startActivity(i);
+        } finally {
+            banco.close();
         }
-
-
     }
+    private void voltarMenu() {
+        finish();
+        Intent i = new Intent(this, MenuActivity.class);
+        startActivity(i);
+    }
+
 }
