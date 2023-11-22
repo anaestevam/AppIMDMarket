@@ -60,20 +60,27 @@ public class AlterarProdutoActivity extends AppCompatActivity {
             limparCampos();  // Limpa os campos caso o produto não seja encontrado
             banco.close(); // Fecha o banco de dados
             return;
+        }else{
+
+            if (nome.getText().toString().isEmpty() || descricao.getText().toString().isEmpty() || estoque.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Por favor, preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            produtoExistente.setNome_produto(nome.getText().toString());
+            produtoExistente.setDescrição_produto(descricao.getText().toString());
+            produtoExistente.setEstoque(Integer.parseInt(estoque.getText().toString()));
+
+            banco.atualizarProduto(produtoExistente);
+            Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+
+            banco.close();
+
+            finish();
+            Intent i = new Intent(this, MenuActivity.class);
+            startActivity(i);
         }
 
-        produtoExistente.setNome_produto(nome.getText().toString());
-        produtoExistente.setDescrição_produto(descricao.getText().toString());
-        produtoExistente.setEstoque(Integer.parseInt(estoque.getText().toString()));
 
-        banco.atualizarProduto(produtoExistente);
-        Toast.makeText(this, "Produto alterado com sucesso!", Toast.LENGTH_SHORT).show();
-
-        banco.close();
-
-        finish();
-        Intent i = new Intent(this, MenuActivity.class);
-        startActivity(i);
     }
     private void voltarMenu() {
         finish();

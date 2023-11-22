@@ -1,6 +1,7 @@
 package com.example.imdmarket.controller;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -53,9 +54,11 @@ public class MudarSenhaActivity extends AppCompatActivity {
             editor.putString("password", novaSenha);
             editor.apply();
 
+            setResult(RESULT_OK);
             Toast.makeText(this, "Senha alterada com sucesso!", Toast.LENGTH_SHORT).show();
 
-            setResult(RESULT_OK);
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
             finish();
         }
     }

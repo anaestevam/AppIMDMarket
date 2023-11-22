@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <ScrollView
-        android:id="@+id/imdmarket"
+        android:id="@+id/imdmarket2"
         android:layout_width="414dp"
         android:layout_height="90dp"
         android:background="@color/orange"
